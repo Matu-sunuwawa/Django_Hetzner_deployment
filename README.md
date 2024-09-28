@@ -38,7 +38,7 @@ usermod -aG sudo master
 usermod -aG www-data master
 ```
 
-[comment]: # (This actually is the most platform independent comment)
+[//]: # (This may be the most platform independent comment)
 
 
 
