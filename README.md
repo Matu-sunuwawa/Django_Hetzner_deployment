@@ -8,3 +8,11 @@
 * WSGI Server - Gunicorn
 * Web Server - Nginx
 * Database - PostgreSQL
+
+# The following diagram illustrates how Django works in the production environment
+
+<p align="center">
+    <a href="#" target="_blank">
+        <img src="https://djangocentral.com/media/uploads/django_nginx_gunicorn.png"/>
+    </a>
+</p>
