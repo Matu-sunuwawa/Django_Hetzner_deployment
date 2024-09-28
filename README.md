@@ -72,6 +72,42 @@ mkdir dir_name
  
 cd dir_name
 ```
+```
+python3 -m venv venv_name
+ 
+source venv_name/bin/activate
+```
+
+## Settings up the project
+```
+git clone git_url
+```
+```
+pip install gunicorn psycopg2-binary
+```
+
+### changes in <mark>settings.py</mark> file to make it deployment-ready
+```
+ALLOWED_HOSTS = ['Ip_Adress', 'domain_name.com', 'www.domain_name.com']
+```
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'djangodb',
+        'USER': 'djangouser',
+        'PASSWORD': 'm0d1fyth15',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+```
+
+### Luckily Django comes with a utility to run checks for a production-ready application run the following command in your terminal.
+```
+python manage.py check --deploy
+```
+ - You will see an output with no errors but several warnings. This means the check was successful, but you should go through the warnings to see if there is anything more you can do to make your project safe for production.
 
 
 
