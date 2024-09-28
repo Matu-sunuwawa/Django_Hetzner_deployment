@@ -225,7 +225,7 @@ STATIC_ROOT = '/var/www/static'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = '/var/www/media'
 ```
-<p style="text-align:center">--//--</p>
+<p align="center">--//--</p>
 
 ```
 STATIC_ROOT = '/var/www/static'
