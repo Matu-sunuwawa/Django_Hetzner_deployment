@@ -207,7 +207,7 @@ So in your project's <mark>settings.py</mark> modify the <mark>STATIC_ROOT</mark
   288  source env/bin/activate
   289  cd Django_Hetzner_deployment/
   290  sudo mkdir /var/www/static
-  292  sudo chown -R username:username /var/www/static
+  292  sudo chown -R www-data:www-data /var/www/static
   293  python manage.py collectstatic
 ```
 ```
