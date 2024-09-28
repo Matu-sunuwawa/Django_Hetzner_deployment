@@ -103,7 +103,7 @@ DATABASES = {
 }
 ```
 
-### Luckily Django comes with a utility to run checks for a production-ready application run the following command in your terminal.
+#### Luckily Django comes with a utility to run checks for a production-ready application run the following command in your terminal.
 ```
 python manage.py check --deploy
 ```
