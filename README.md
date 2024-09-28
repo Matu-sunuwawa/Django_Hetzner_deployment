@@ -44,7 +44,34 @@ usermod -aG www-data master
 su - master
 ```
 
+## Install Packages
+```
+sudo apt-get install postgresql postgresql-contrib libpq-dev python3-dev
+```
 
+## Setting up PostgreSQL
+```
+sudo -u postgres psql
+```
+```
+CREATE USER database_user WITH ENCRYPTED PASSWORD 'some_password';
+CREATE DATABASE database_name OWNER database_user;
+ALTER ROLE database_user SET client_encoding TO 'utf8';
+ALTER ROLE database_user SET default_transaction_isolation TO 'read committed';
+ALTER ROLE database_user SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE database_name TO database_user;
+\q
+```
+
+## Creating a Virtual Environment
+```
+sudo apt install python3-venv
+```
+```
+mkdir dir_name
+ 
+cd dir_name
+```
 
 
 
