@@ -254,15 +254,12 @@ sudo ufw allow 'Nginx Full'
 
 ## Now in your browser navigate to <mark>http://domain_name_or_server_IP</mark> the application should be running here.
 
+## Troubleshooting Nginx
+<p>In case you don't see your application running that means there must be some misconfiguration in the server block so go through the Nginx logs and solve the issue.
 
+Run the following command to access Nginx logs.
+</p>
 
-
-
-
-
-
-
-
-
-
-
+```
+sudo tail -F /var/log/nginx/error.log
+```
