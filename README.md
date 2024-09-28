@@ -16,3 +16,8 @@
         <img src="https://djangocentral.com/media/uploads/django_nginx_gunicorn.png"/>
     </a>
 </p>
+
+## Log in to the server
+```
+ssh root@IP_Address
+```
