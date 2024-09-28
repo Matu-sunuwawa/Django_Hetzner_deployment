@@ -104,11 +104,11 @@ DATABASES = {
 ```
 
 <p>Luckily Django comes with a utility to run checks for a production-ready application run the following command in your terminal.</p>
+
 ```
 python manage.py check --deploy
 ```
     - You will see an output with no errors but several warnings. This means the check was successful, but you should go through the warnings to see if there is anything more you can do to make your project safe for production.
-
 ```
 python manage.py makemigrations
  
