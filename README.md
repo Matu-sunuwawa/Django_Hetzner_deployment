@@ -201,6 +201,17 @@ sudo apt-get install nginx
 
 So in your project's <mark>settings.py</mark> modify the <mark>STATIC_ROOT</mark> as shown below.</p>
 
+<h3>Notice That!!!</h3>
+
+```
+  288  source env/bin/activate
+  289  cd Django_Hetzner_deployment/
+  290  sudo mkdir /var/www/static
+  292  sudo chown -R username:username /var/www/static
+  293  python manage.py collectstatic
+
+```
+
 ```
 STATIC_ROOT = '/var/www/static'
 ```
