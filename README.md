@@ -137,7 +137,7 @@ You can test if Gunicorn is able to serve the project as follows.</p>
 ```
 gunicorn --bind 0.0.0.0:8000 project_name.wsgi
 ```
-<p>Go back to http://server_domain_or_IP:8000 you should see the application running but without static assets such as CSS and images.</p>
+<p>🎉Go back to http://server_domain_or_IP:8000 you should see the application running but without static assets such as CSS and images.</p>
 <p>Once you finishing testing the app press ctrl + c to stop the process and deactivate the virtual environment.</p>
 
 ```
@@ -261,7 +261,7 @@ server {
 sudo ln -s /etc/nginx/sites-available/project_name /etc/nginx/sites-enabled
 ```
 
-## Test your Nginx configuration for syntax errors by the following command
+## 🧪Test your Nginx configuration for syntax errors by the following command
 ```
 sudo nginx -t
 ```
@@ -278,7 +278,7 @@ sudo ufw delete allow 8000
 sudo ufw allow 'Nginx Full'
 ```
 
-## Now in your browser navigate to <mark>http://domain_name_or_server_IP</mark> the application should be running here.
+## 🚀Now in your browser navigate to <mark>http://domain_name_or_server_IP</mark> the application should be running here.
 
 ## Troubleshooting Nginx
 <p>In case you don't see your application running that means there must be some misconfiguration in the server block so go through the Nginx logs and solve the issue.
