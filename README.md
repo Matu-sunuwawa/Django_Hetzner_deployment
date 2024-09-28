@@ -21,3 +21,43 @@
 ```
 ssh root@IP_Address
 ```
+```
+sudo apt update
+sudo apt upgrade
+```
+
+## Create a system user
+```
+adduser master
+```
+```
+usermod -aG sudo master
+```
+[//]: # We will also add user master to our www-data group(Optional)
+```
+usermod -aG www-data master
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
