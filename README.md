@@ -265,7 +265,7 @@ sudo ln -s /etc/nginx/sites-available/project_name /etc/nginx/sites-enabled
 ```
 sudo nginx -t
 ```
-<p>If the test was was successful go forward and restart the Nginx server so that changes can take place.</p>
+👌<p>If the test was was successful go forward and restart the Nginx server so that changes can take place.</p>
 
 ```
 sudo systemctl restart nginx
