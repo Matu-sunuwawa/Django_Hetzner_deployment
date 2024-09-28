@@ -108,7 +108,9 @@ DATABASES = {
 ```
 python manage.py check --deploy
 ```
-    - You will see an output with no errors but several warnings. This means the check was successful, but you should go through the warnings to see if there is anything more you can do to make your project safe for production.
+
+- You will see an output with no errors but several warnings. This means the check was successful, but you should go through the warnings to see if there is anything more you can do to make your project safe for production.
+  
 ```
 python manage.py makemigrations
  
@@ -149,6 +151,8 @@ mkdir /var/log/gunicorn
 ```
 <p>With that now create and open a systemd service file for Gunicorn with sudo privileges and add the below configuration. <mark>Reminder! unix_user_name, /path/to/the/project/directory, /path/to/virtual-env/bin/gunicorn, project_name.sock project_name.wsgi:application</mark></p>
 
+- <mark>unix_user_name</mark>- By default it's <mark>root</mark>
+
 ```
 sudo nano /etc/systemd/system/gunicorn.service
 ```
@@ -167,10 +171,88 @@ ExecStart=/path/to/virtual-env/bin/gunicorn --access-logfile - --workers 3 --bin
 WantedBy=multi-user.target
 ```
 
+```
+sudo systemctl start gunicorn
+ 
+sudo systemctl enable gunicorn
+```
+```
+sudo systemctl status gunicorn
+```
 
+<p>If the output indicates an error has occurred you must have misconfigured something so check the logs to find it out. To see the Gunicorn logs run the following command.</p>
 
+```
+sudo journalctl -u gunicorn
+```
+<p>In case you had to make changes in the service file reload the daemon to reread the new service definition and restart the Gunicorn process by these commands.</p>
 
+```
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
+```
 
+## Setting up Nginx
+
+```
+sudo apt-get install nginx
+```
+<p>Since Nginx is going to serve our static assets it's recommended to set the <mark>STATIC_ROOT</mark> to <mark>/var/www/static/</mark> so that it can be easily accessible to Nginx.
+
+So in your project's <mark>settings.py</mark> modify the <mark>STATIC_ROOT</mark> as shown below.</p>
+
+```
+STATIC_ROOT = '/var/www/static'
+```
+```
+python manage.py collectstatic
+```
+
+```
+sudo nano /etc/nginx/sites-available/project_name
+```
+
+- server_domain_or_IP -Type domain name or server IP.
+- /path/to/staticfiles: If you are following the guide then it should be /var/www
+
+```
+server {
+    listen 80;
+    server_name server_domain_or_IP;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location  /static/ {
+        root /path/to/staticfiles;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/var/log/gunicorn/project_name.sock;
+    }
+}
+```
+```
+sudo ln -s /etc/nginx/sites-available/project_name /etc/nginx/sites-enabled
+```
+
+## Test your Nginx configuration for syntax errors by the following command
+```
+sudo nginx -t
+```
+<p>If the test was was successful go forward and restart the Nginx server so that changes can take place.</p>
+
+```
+sudo systemctl restart nginx
+```
+
+<p>Finally, we need to open up our firewall to normal traffic on port 80. Since we no longer need access to the development server, we can remove the rule to open port 8000 as well.</p>
+
+```
+sudo ufw delete allow 8000
+sudo ufw allow 'Nginx Full'
+```
+
+## Now in your browser navigate to <mark>http://domain_name_or_server_IP</mark> the application should be running here.
 
 
 
