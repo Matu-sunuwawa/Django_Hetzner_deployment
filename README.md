@@ -209,7 +209,21 @@ So in your project's <mark>settings.py</mark> modify the <mark>STATIC_ROOT</mark
   290  sudo mkdir /var/www/static
   292  sudo chown -R username:username /var/www/static
   293  python manage.py collectstatic
+```
+```
+location /media/ {
+    root /var/www;
+}
+location  /static/ {
+    root /var/www;
+}
+```
+```
+STATIC_URL = 'static/'
+STATIC_ROOT = '/var/www/static'
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = '/var/www/media'
 ```
 
 ```
