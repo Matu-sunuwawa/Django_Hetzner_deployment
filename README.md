@@ -212,8 +212,8 @@ python manage.py collectstatic
 sudo nano /etc/nginx/sites-available/project_name
 ```
 
-- server_domain_or_IP -Type domain name or server IP.
-- /path/to/staticfiles: If you are following the guide then it should be /var/www
+- <mark>server_domain_or_IP</mark> -Type <mark>domain name</mark> or <mark>server IP</mark>.
+- <mark>/path/to/staticfiles</mark>: If you are following the guide then it should be <mark>/var/www</mark>
 
 ```
 server {
