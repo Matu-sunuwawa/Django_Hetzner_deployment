@@ -33,7 +33,7 @@ adduser master
 ```
 usermod -aG sudo master
 ```
-[comment]: # We will also add user master to our www-data group(Optional)
+We will also add user master to our www-data group[optional option]
 ```
 usermod -aG www-data master
 ```
