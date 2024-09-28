@@ -5,14 +5,6 @@
 # Production Stack Architecture
 
 * OS - Ubuntu
-WSGI Server - Gunicorn
-Web Server - Nginx
-Database - PostgreSQL
-<details>
-   <summary>Toggle List Example</summary>
-
-    ### Heading
-    1. ABC
-    2. DEF
-       * Hello
-</details>
+* WSGI Server - Gunicorn
+* Web Server - Nginx
+* Database - PostgreSQL
