@@ -34,10 +34,12 @@ adduser master
 usermod -aG sudo master
 ```
 <p>We will also add user master to our www-data group(Optional)</p>
+
 ```
 usermod -aG www-data master
 ```
 <p>Now, we can log in as the new user ‘master’</p>
+
 ```
 su - master
 ```
