@@ -85,6 +85,9 @@ git clone git_url
 ```
 pip install gunicorn psycopg2-binary
 ```
+```
+pip install -r requirements.txt
+```
 
 ### changes in <mark>settings.py</mark> file to make it deployment-ready
 ```
