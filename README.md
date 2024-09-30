@@ -290,3 +290,104 @@ Run the following command to access Nginx logs.
 ```
 sudo tail -F /var/log/nginx/error.log
 ```
+
+
+## Securing the application with SSL
+<p>Let's Encrypt is a free Certificate Authority (CA) that issues SSL certificates. You can use these SSL certificates to secure traffic on your Django application. Lets Encrypt has an automated installer called Certbot with Certbot you can very easily add a certificate to your site in just a couple of minutes</p>
+
+```
+sudo apt-get update
+sudo apt-get install python3-certbot-nginx
+```
+
+## Configuring Nginx for Certbot
+<p>Certbot can automatically configure SSL for Nginx, but it needs to be able to find the correct server block in your config. It does this by looking for a server_name directive that matches the domain you're requesting a certificate for so make sure you have set the correct domain in the /etc/nginx/sites-available/project_namefile.</p>
+
+```
+. . .
+server_name example.com www.example.com;
+. . .
+```
+
+In case you made changes to this server block reload Nginx.
+```
+sudo systemctl reload nginx
+```
+
+Next, we need to configure ufw firewall to allow HTTPS traffic.So first enable ufw firewall if it's not already.
+```
+sudo ufw allow ssh
+ 
+sudo ufw enable 
+```
+- Enter y for confirmation next add following rules to the firewall.
+```
+sudo ufw allow 'Nginx Full'
+ 
+sudo ufw delete allow 'Nginx HTTP'
+```
+```
+sudo ufw status
+```
+### output:
+```
+Status: active
+
+To                         Action      From
+--                         ------      ----
+Nginx Full                 ALLOW       Anywhere
+22/tcp                     ALLOW       Anywhere
+Nginx Full (v6)            ALLOW       Anywhere (v6)
+22/tcp (v6)                ALLOW       Anywhere (v6)
+```
+
+## Now we can obtain the <code>SSL</code> certificate with the following command
+```
+sudo certbot --nginx -d example.com -d www.example.com
+```
+But,Certbot not found:
+```
+sudo apt update
+
+sudo apt install snapd
+```
+```
+sudo snap install core
+```
+```
+sudo snap install --classic certbot
+
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+```
+Now, try again <code>sudo certbot --nginx -d example.com -d www.example.com</code>
+
+You will be asked a series of questions for the setup:
+```
+ANSWER Y,Y,Y....for YES,YES,YES
+```
+
+## Renewing SSL certificates
+```
+sudo certbot renew --dry-run
+```
+- If you see no errors, you’re all set. When necessary, Certbot will renew your certificates and reload Nginx to pick up the changes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
