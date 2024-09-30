@@ -345,7 +345,7 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
 ```
 sudo certbot --nginx -d example.com -d www.example.com
 ```
-But,Certbot not found:
+But, "Certbot not found":
 ```
 sudo apt update
 
